@@ -1,0 +1,15 @@
+{
+  "id": "balaper-a281184-phi2period",
+  "revision": 2,
+  "problem_ids": ["balaper-a281184-phi2period", "balaper-a281181-phi2period", "balaper-a281183-phi2period", "balaper-phi2period", "balaper-a281440-phi2period", "bala281428"],
+  "topic": "Bala's inverse-function modular conjectures, Su's period theorem, and sharp finite-modulus tails",
+  "title": "Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "For Peter Bala's totient-square conjecture in OEIS A281184, comment of February 16, 2026, revision 41, we specialize Lien-Hung Su's Theorem 3.2 and Corollary 3.3 (October 31, 2026) to obtain the asserted eventual period by identifying the coefficients with integer derivation iterates. For Bala's related examples in A281428, March 3, 2026, revision 54, finite-dimensional certificates prove the least modulo-27 tail period 18 from the exact index 2 and divisibility by 385 from the exact index 6. The former improves Su's sufficient index 3. Seven companion least periods, five row-multiplier identities, full-index and derivative consequences, and two corrected coefficient normalizations are included, with precise written, finite-check and Lean-declaration coverage. No priority claim is made.",
+  "summary": "Exact Cayley–Hamilton certificates give sharp origins 2 modulo 27 and 6 modulo 385 for A281428, alongside Su-attributed general modular conclusions for Bala's inverse-function sequences and explicit companion certificates.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281184TotientSquarePeriod.lean"
+}

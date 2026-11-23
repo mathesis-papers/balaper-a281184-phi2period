@@ -1,0 +1,466 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=2em
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\title{Sharp tails for Bala's inverse-function conjectures\\
+and a specialization of Su's period theorem}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\[-1pt]
+\small ChronoAI Pte Ltd, Singapore}
+\date{November 14, 2026}
+\hypersetup{pdftitle={Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem},pdfauthor={Haobo Ma and Wenlin Zhang}}
+\begin{document}
+\maketitle
+\begin{abstract}
+For Peter Bala's totient-square conjecture in OEIS A281184, comment of
+February 16, 2026, revision 41, we specialize Lien-Hung Su's Theorem 3.2
+and Corollary 3.3 (October 31, 2026) to obtain the asserted eventual
+period by identifying the coefficients with integer derivation iterates.
+For Bala's related examples in A281428, March 3, 2026, revision 54,
+we give finite-dimensional certificates proving the least modulo-$27$
+tail period $18$ from the exact index $2$, and divisibility by $385$
+from the exact index $6$.
+The former improves Su's sufficient index $3$.
+We also reprove seven companion least periods, five row-multiplier
+identities, and two coefficient identities, distinguishing Su's general
+theorems, written proofs, exact finite certificates, and the scope of
+the linked Lean declarations. No priority claim is made.
+\end{abstract}
+
+\section{The coefficients and the sharp tails}
+Bala's question in \cite{oeis184} concerns the even exponential
+coefficients of $C^3$, where $S'=C^4$, $C'=SC^3$, $S(0)=0$, $C(0)=1$.
+Su \cite{su} proves the general modular assertions for this flow and its
+neighbors. The purpose here is to explain that identification and give
+explicit small-rank certificates, with sharp tail origins for the
+odd-flow examples. Su's general prime-power argument supplies all-modulus
+conclusions; the finite-dimensional argument below supplies exact periods
+and origins for specified moduli at the cost of rank $\lceil m/2\rceil$.
+The differential descriptions themselves are inherited from the OEIS
+contributors and Bala's account of inverse functions \cite{graves}.
+
+Fix an integer $b\geq2$. In
+\[
+ R=\Z[s,c]/(c^2-s^2-1),\qquad
+ D_b s=c^b,\quad D_b c=sc^{b-1},\quad E(f)=f(0,1),
+\]
+the derivation is well defined because it kills $c^2-s^2-1$.
+Define
+\begin{equation}\label{eq:coeff}
+ A_b(n,e)=E(D_b^{2n}c^e)=(2n)![x^{2n}]C_b(x)^e
+ \quad(n,e\geq0),
+\end{equation}
+where $S_b'=C_b^b$, $C_b'=S_bC_b^{b-1}$ and $(S_b(0),C_b(0))=(0,1)$.
+To justify the equality, the iterated Leibniz rule shows that
+$f\mapsto\sum_{j\geq0}E(D_b^jf)x^j/j!$ is multiplicative and intertwines
+$D_b$ with differentiation. Its images of $s,c$ therefore solve this
+system; coefficient recursion gives uniqueness in $\Q[[x]]$.
+It also proves integrality of every $A_b(n,e)$.
+Uniqueness under $x\mapsto-x$ proves that $S_b$ is odd and $C_b$ even.
+We have $C_b^2-S_b^2=1$ and
+$(\log(C_b+S_b))'=C_b^{b-1}$; hence the $b=4,e=3$ definition is
+exactly A281184. Put $u(n)=A_5(n,1)$, which is A281428.
+Here and below a least tail period is the least positive period of the
+eventually periodic residue sequence, and an exact origin is its earliest
+valid starting index in the source's indexing.
+
+\begin{theorem}[Sharp origins for Bala's odd-flow examples]\label{thm:sharp}
+The sequence $u(n)$ has least eventual period $18$ modulo $27$,
+with exact origin $n=2$. Moreover
+\[
+ u(n)\equiv0\pmod{385}\quad(n\geq6),\qquad u(5)\equiv105\pmod{385}.
+\]
+Its exact zero-tail origins modulo $5,7,11$ are $3,4,6$, respectively.
+\end{theorem}
+The all-modulus statements underlying these examples are already proved
+by Su, Theorem 4.1. In particular his $3$-primary bound gives origin $3$
+modulo $27$; Theorem~\ref{thm:sharp} sharpens it to $2$.
+Bala's displayed sufficient origin $7$ is valid and is not an assertion
+of minimality \cite[March 3, 2026 example block]{oeis428}.
+
+\section{Finite certificates and their all-index meaning}
+Write $z=s^2$, $\eta\equiv e\pmod2$, $\eta\in\{0,1\}$, and
+$f_0=(1+z)^{(e-\eta)/2}$. Direct differentiation gives
+\begin{equation}\label{eq:operator}
+ D_b^2(c^\eta f)=c^\eta B_{b,\eta}f,\qquad
+ \begin{aligned}
+ g&=\eta f+2(1+z)f',\\
+ B_{b,\eta}f&=(1+z)^{b-2}
+       \bigl((1+(\eta+b-1)z)g+2z(1+z)g'\bigr).
+ \end{aligned}
+\end{equation}
+Thus $A_b(n,e)=[z^0]B_{b,\eta}^{\,n}f_0$ over the integers.
+Fix $m\geq2$ and $h=\lceil m/2\rceil$. The coefficient of $z^{j-1}$
+in $B_{b,\eta}(z^j)$ is $2j(2j-1)$ and all other terms have degree
+at least $j$. At $j=h$ that coefficient is divisible by $m$, since
+$m=2h$ or $2h-1$. For $j>h$ even the degree-lowering term has degree
+at least $h$. Therefore $B_{b,\eta}$ induces an endomorphism $M$ of the
+free rank-$h$ module $(\Z/m\Z)[z]/(z^h)$, and
+\begin{equation}\label{eq:scalar}
+ A_b(n,e)\equiv\ell M^nf_0\pmod m,\qquad \ell(f)=[z^0]f.
+\end{equation}
+
+\begin{proposition}[Propagation of a finite scalar certificate]\label{prop:ch}
+For $P\geq1$, $r\in\Z/m\Z$, and $t\geq0$, if
+$\ell M^j(M^P-rI)f_0=0$ for $t\leq j<t+h$, then
+$A_b(j+P,e)=rA_b(j,e)$ modulo $m$ for every $j\geq t$.
+Likewise $h$ consecutive zero values beginning at $t$ imply a zero tail.
+\end{proposition}
+\begin{proof}
+The characteristic polynomial of $M$ is monic of degree $h$.
+Cayley--Hamilton over the commutative ring $\Z/m\Z$ gives the same
+order-$h$ scalar recurrence for $\ell M^jv$ for every state $v$.
+Induction propagates $h$ consecutive zeros. Take
+$v=(M^P-rI)f_0$ for the first claim and $v=f_0$ for the second.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sharp}]
+Take $(b,e,m,h)=(5,1,27,14)$, so $f_0=1$.
+Formula~\eqref{eq:operator}, with all coefficients reduced modulo $27$,
+gives
+\[
+ (u(j+18)-u(j))_{j=2}^{15}=(0,0,0,0,0,0,0,0,0,0,0,0,0,0).
+\]
+These are exactly fourteen premises of Proposition~\ref{prop:ch}.
+For transparency the first period, at indices $2$ through $19$, is
+\[
+ (17,1,8,19,17,1,26,19,17,10,26,19,8,10,26,1,8,10).
+\]
+The pairs $u(2)=17$, $u(11)=10$ and $u(8)=26$ exclude periods
+$9$ and $6$. The least eventual period divides $18$: translate any
+eventual period back into this $18$-periodic tail and use the common-divisor
+property for periods of a periodic word. Every proper divisor of $18$
+divides $9$ or $6$, so the least period is $18$.
+Also $u(1)=1\ne10=u(19)$ modulo $27$, proving the exact origin.
+
+For the zero tails, the same operator gives the following full premises;
+the column headed ``zeros'' lists $h$ consecutive values from $t$.
+\[
+\begin{array}{@{}rrrrl@{}}\toprule
+ m&h&t&u(t-1)\bmod m&\text{zeros}\\\midrule
+ 5&3&3&2&(0,0,0)\\
+ 7&4&4&4&(0,0,0,0)\\
+ 11&6&6&6&(0,0,0,0,0,0)\\\bottomrule
+\end{array}
+\]
+Proposition~\ref{prop:ch} proves the zero tails; the nonzero preceding
+values prove their exact origins. Chinese remaindering gives the $385$
+congruence from $6$. Directly the residues at indices $0$ through $6$
+modulo $385$ are $(1,1,17,95,315,105,0)$, proving sharpness.
+All displayed finite premises use only the explicit polynomial rule
+\eqref{eq:operator}; \texttt{verify.py} supplies their exact arithmetic.
+\end{proof}
+
+\section{The companion examples and two-dimensional rows}
+The source identifications, including the one-index offset, are
+\begin{equation}\label{eq:family}
+\begin{aligned}
+ \mathrm{A281180}(n)&=A_4(n-1,4) &&(n\geq1),\\
+ \mathrm{A281181}(n)&=A_4(n,1),&
+ \mathrm{A281183}(n)&=A_4(n,2),\\
+ \mathrm{A281184}(n)&=A_4(n,3),&
+ \mathrm{A281440}(n)&=A_8(n,1).
+\end{aligned}
+\end{equation}
+The first follows by differentiating $S_4$, the others from their e.g.f.s.
+Su's Proposition 3.6 proves the next seven least periods. We give a
+common certificate so the row observations have a precise interpretation.
+
+\begin{corollary}[Companion periods, reproved]\label{cor:periods}
+The table gives least periods $P$ and exact origins $n_0$ in source
+indices. In each row $h$ scalar period differences from $n_0$ are zero.
+\[
+\begin{array}{@{}lrrrr@{}}\toprule
+ \text{sequence}&m&P&n_0&h\\\midrule
+ \mathrm{A281180}&7&18&1&4\\
+ \mathrm{A281181}&10&8&0&5\\
+ \mathrm{A281181}&9&3&1&5\\
+ \mathrm{A281181}&13&72&0&7\\
+ \mathrm{A281183}&11&25&1&6\\
+ \mathrm{A281184}&11&25&1&6\\
+ \mathrm{A281440}&13&72&0&7\\\bottomrule
+\end{array}
+\]
+Also $\mathrm{A281181}(n)\equiv1\pmod{12}$ for every $n\geq0$.
+\end{corollary}
+\begin{proof}
+Use \eqref{eq:family} in \eqref{eq:operator} and Proposition~\ref{prop:ch}.
+Here are the witnesses excluding the maximal proper divisor shifts;
+each entry is $(n:a(n),a(n+P/q))$ for the prime divisor $q$ of $P$.
+\[
+\begin{array}{@{}lll@{}}\toprule
+ \text{sequence, modulus}&q&\text{witness}\\\midrule
+ \mathrm{A281180},7&2,3&(1:1,6),\ (1:1,2)\\
+ \mathrm{A281181},10&2&(0:1,9)\\
+ \mathrm{A281181},9&3&(1:1,4)\\
+ \mathrm{A281181},13&2,3&(0:1,12),\ (0:1,9)\\
+ \mathrm{A281183},11&5&(1:2,10)\\
+ \mathrm{A281184},11&5&(1:3,4)\\
+ \mathrm{A281440},13&2,3&(0:1,12),\ (0:1,9)\\\bottomrule
+\end{array}
+\]
+For rows with $n_0=1$ and source domain starting at $0$, the preceding
+pairs $(a(0),a(P))$ are respectively $(1,7),(1,10),(1,3)$ for
+A281181 modulo $9$, A281183 and A281184 modulo $11$.
+The other origins are the beginning of the source domain.
+For the last claim use $(b,e,m,h)=(4,1,12,6)$: the seven values at
+$0\leq n\leq6$ are all $1$ modulo $12$. Their six successive
+differences and Proposition~\ref{prop:ch} prove the constant residue.
+\end{proof}
+
+\begin{corollary}[The five row multipliers, reproved]\label{cor:rows}
+The following identities hold for all $n\geq n_0$:
+$a(n+r)\equiv\lambda a(n)\pmod m$.
+\[
+\begin{array}{@{}lrrrr@{}}\toprule
+ \text{sequence}&m&r&\lambda&n_0\\\midrule
+ \mathrm{A281180}&7&6&2&1\\
+ \mathrm{A281181}&13&6&7&0\\
+ \mathrm{A281183}&11&5&5&1\\
+ \mathrm{A281184}&11&5&5&1\\
+ \mathrm{A281440}&13&6&6&0\\\bottomrule
+\end{array}
+\]
+\end{corollary}
+\begin{proof}
+For each row \eqref{eq:operator} gives $h=\lceil m/2\rceil$ zero
+differences $a(n+r)-\lambda a(n)$ from $n_0$. Apply
+Proposition~\ref{prop:ch}, with the offset in \eqref{eq:family}.
+Thus the rows in the source rectangles form geometric progressions
+columnwise. Su's Proposition 3.4 gives a general higher-order row
+relation for $b=4$, reducing to a unit multiplier for squarefree moduli
+after its stated threshold. It accounts for the four $b=4$ rows;
+the certificates here also establish the listed origins.
+The $b=8$ row follows directly from its certificate, and is consistent
+with Su's prime-characteristic operator law in Section 2.
+\end{proof}
+
+\section{The all-modulus theorems and coefficient siblings}
+For an even flow exponent $b\geq2$, Su's Theorem 3.2 states, for $m\geq3$,
+\begin{equation}\label{eq:su}
+ A_b(n+\varphi(m)^2/2,e)\equiv A_b(n,e)\pmod m
+ \quad(n\geq N_b(m),\ e\geq0).
+\end{equation}
+Here $N_b(m)=\max_{p^r\Vert m}N_b(p^r)$, where $N_b(2^r)=r$ and,
+for odd $p$,
+\[
+ \alpha_{b,p}=(-1)^{(p-1)/2}
+ \prod_{j=0}^{(p-3)/2}\frac{b+2j}{2(j+1)}\ \text{in }\F_p,\qquad
+ N_b(p^r)=\begin{cases}
+ r,&\alpha_{b,p}\ne0,\\
+ \lceil r(1+(p-1)p^{r-1})/2\rceil,&\alpha_{b,p}=0.
+ \end{cases}
+\]
+The denominators are units. For $b=4$, the even numerator factors
+$4,6,\ldots,p+1$ contain no multiple of odd $p$, so
+$N_4(m)=\max_{p\mid m}v_p(m)$. Vanishing branches can occur for $b=8$;
+the stated bound retains them. Applying \eqref{eq:su} twice proves
+Bala's five totient-square assertions via \eqref{eq:family}.
+For A281180 the sufficient source index is $N_4(m)+1$.
+At $m=1$ all congruences hold, and at $m=2$ each column is constant
+from $1$: the elementary recurrence
+\begin{equation}\label{eq:rec}
+ A_b(n,e)=e(e+b-1)A_b(n-1,e+2b-2)
+          -e(e+b-2)A_b(n-1,e+2b-4),\quad A_b(0,e)=1
+\end{equation}
+shows that the tail is $0$ for even $e$ and $1$ for odd $e$.
+This follows by differentiating $c^e$ twice, and for $b=4$ is
+Manyama's source recurrence \cite{oeis184}.
+
+Su's Theorem 4.1 proves both conjectures in A281428, revision 54,
+Bala's March 3, 2026 comment block:
+\begin{itemize}
+\item If $(m,6)=1$, then $u(n)$ is eventually zero modulo $m$.
+For $p\geq5$, $r\geq1$, a sufficient index modulo $p^r$ is
+$\lceil r(1+(p-1)p^{r-1})/2\rceil$.
+\item For every $m\geq1$, $\varphi(m)$ is an eventual period of $u$
+modulo $m$. The source poses this for moduli divisible by $2$ or $3$;
+the extension to all $m$ follows by joining the zero branches.
+More precisely $u(n+2^t)\equiv u(n)\pmod{2^{t+2}}$ for $n,t\geq0$,
+and $u(n+2\cdot3^{r-1})\equiv u(n)\pmod{3^r}$ for $n\geq r\geq1$.
+\end{itemize}
+These are cited general theorems, with the coefficient identification
+\eqref{eq:coeff}; Theorem~\ref{thm:sharp} provides the sharper finite-modulus
+origins by a separate written certificate argument.
+
+\begin{corollary}[Full-index companion and derivative identities]\label{cor:identities}
+For A281182 set $t(j)=j![x^j](C_4+S_4)$. Then
+$t(2n)=A_4(n,1)$ and $t(2n+1)=A_4(n,4)$.
+Consequently $\varphi(m)^2$ is a full-index tail period for $m\geq3$
+from index $2N_4(m)$, and $2\varphi(m)^2$ is a tail period for all $m\geq1$.
+The full-index shift $1$ fails modulo $2$; it is not asserted in this source.
+
+For A281183, let $v(y)=1+y^2$ and
+$T(f)=v\,d(vf)/dy$. Then $(T^{2n}1)(0)=A_4(n,2)$.
+For A281181, $(S_4/C_4)'=C_4$, and the $x^5$ coefficient of $S_4/C_4$
+is $13/5!$.
+\end{corollary}
+\begin{proof}
+Parity and $S_4'=C_4^4$ give the two coefficient equalities. Doubling
+the even-column shift in \eqref{eq:su} preserves each parity class.
+Modulo $2$ the even terms are $1$, while the odd terms are $0$ from
+$j=3$, so a shift of $2$ works but $1$ does not.
+For the second assertion set $L=v^2d/dy$. Then $T=v^{-1}Lv$ and
+$T^j1=v^{-1}L^jv$ in $\Q[[y]]$. Evaluation at $y=0$, using the flow
+$S_4'=v(S_4)^2$, gives $(L^jv)(0)=j![x^j]C_4^2$.
+This proves Bala's tentative formula of December 22, 2025;
+the same proof is Su's Proposition 3.5.
+Finally $(S_4/C_4)'=C_4(C_4^2-S_4^2)=C_4$.
+Since $A_4(2,1)=13$, integration gives $13x^5/5!$.
+Thus the printed denominator $6!$ in the December 14, 2025 expansion
+in A281181 should be $5!$; the derivative identity itself is correct.
+\end{proof}
+
+\begin{corollary}[Weighted-derivative normalization]\label{cor:factorial}
+In A281428's January 22, 2026 formula, let
+$f_k(0,\theta)=\sec^{k-3}\theta$ and
+$f_k(j,\theta)=\partial_\theta(\sec^3\theta f_k(j-1,\theta))$.
+For integer $k\geq0$ and $j\geq0$, the correctly normalized identity is
+$f_k(j,0)=j![x^j]C_5(x)^k$.
+\end{corollary}
+\begin{proof}
+Put $L=\sec^3\theta\,\partial_\theta$, $w=\sec^3\theta$.
+The recurrence operator is $w^{-1}Lw$, so
+$f_k(j,\theta)=w^{-1}L^j(\sec^k\theta)$.
+Under $\theta'=\sec^3\theta$, $\theta(0)=0$, the series
+$\sec\theta(x)=C_5(x)$ and $\tan\theta(x)=S_5(x)$ solve the $b=5$ flow.
+Evaluation therefore gives the asserted derivative coefficient.
+At $k=1,j=2$ the left side is $1$, whereas $[x^2]C_5=1/2$.
+Su's remark after Theorem 4.1 states the same correction.
+\end{proof}
+
+\section{Coverage and verification scope}
+The following table separates source assertions, examples, and extensions.
+The OEIS revision numbers identify the versions consulted; dates locate
+the signed source blocks, not claims of priority.
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.43\textwidth}>{\raggedright\arraybackslash}p{.52\textwidth}@{}}
+\toprule Source item and exact locator & Coverage\\\midrule\endhead
+A281184 rev.~41, Bala comment, Feb.~16, 2026;
+A281180 rev.~86, Feb.~18, 2026;
+A281181 rev.~103 and A281183 rev.~60, Feb.~16, 2026;
+A281440 rev.~17, Feb.~19, 2026 &
+Proved: coefficient identifications and specializations of Su's Theorem 3.2
+and Corollary 3.3. Prior proof cited: Su (2026).\\
+Seven displayed least-period examples in these entries; A281181 Curtz
+comments, Jan.~20, 2017 &
+Reproved; prior proof Su (2026), Proposition 3.6.
+Corollary~\ref{cor:periods}; the mod-$12$ difference assertion is also proved.\\
+Five rectangular displays and Bala's ``two-dimensional'' remarks in
+the dated modular example blocks &
+Proved as the five precise multiplier identities of
+Corollary~\ref{cor:rows}; prior general row relation for $b=4$:
+Su (2026), Proposition 3.4; the $b=8$ certificate is stated separately.
+Unspecified stronger meanings are not covered.\\
+A281428 rev.~54, Bala conjectures 1 and 2, Mar.~3, 2026 &
+Proved by the cited Su (2026), Theorem 4.1, with all-modulus scope stated above.\\
+A281428, same-date examples, moduli $27$ and $385$ &
+Proved, with exact origins $2$ and $6$ in Theorem~\ref{thm:sharp}.
+Su's general mod-$27$ origin is sufficient but not sharp.\\
+A281183 rev.~60, tentative $g$ formula, Dec.~22, 2025 &
+Reproved; prior proof Su (2026), Proposition 3.5;
+Corollary~\ref{cor:identities}.\\
+A281181 rev.~103, $S/C$ expansion, Dec.~14, 2025 &
+Refuted-and-corrected coefficient $13/6!$ to $13/5!$;
+the asserted derivative identity is proved.\\
+A281428 rev.~54, generalized derivative formula, Jan.~22, 2026 &
+Refuted-and-corrected ordinary-coefficient normalization;
+Corollary~\ref{cor:factorial}. Prior correction cited: Su (2026), remark after Theorem 4.1.\\
+A281182 rev.~32, defining full-index e.g.f. &
+Not posed; full-index periods proved in Corollary~\ref{cor:identities}.
+The universal shift-$1$ reading modulo $2$ is not asserted in the source;
+it fails on the alternating tail.\\
+Other cross-referenced sequences and unrelated inverse-function formulas &
+Not covered; no claim of resolving their separate problems.\\\bottomrule
+\end{longtable}
+\normalsize
+
+\begin{samepage}
+The following pinned Lean declarations state the formal scope.
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+\item
+\href{https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281184TotientSquarePeriod.lean}{\texttt{BalaA281184TotientSquarePeriod.lean}}
+\par\noindent
+The declaration \texttt{result} in its matching namespace states existence of the
+source series, the integer even coefficients of $C^3$, and eventual
+shift $\varphi(m)^2$ for every positive $m$.
+\end{itemize}
+\end{samepage}
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parsep}{0pt}
+\item
+\href{https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281181TotientSquarePeriod.lean}{\texttt{BalaA281181TotientSquarePeriod.lean}},
+\par\noindent
+The namespace \texttt{BalaPolynomialSystem} has
+\texttt{even\_sequence\_coefficient}, identifying the normalized coefficients,
+and \texttt{even\_sequence\_period}, giving the square-period shift for
+$q=3$ or $7$, arbitrary observable exponent, and flow exponent $b=q+1$.
+\item
+\href{https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Residue/BalaQuarticEGFEventualDivisibility.lean}{\texttt{BalaQuarticEGFEventualDivisibility.lean}}
+\par\noindent
+The declaration \texttt{result} in its matching namespace states existence of a
+normalized source solution and eventual integer-multiple divisibility
+of its even exponential coefficients for every positive modulus coprime
+to $6$. It states neither the exact $385$ origin nor the second
+A281428 conjecture about periods at moduli divisible by $2$ or $3$.
+\end{itemize}
+All three files are pinned to the same revision in their links.
+The half-square shifts and general odd-flow conclusions are the cited
+Su theorems. Exact origins, the eight least-period certificates, five
+row relations, and normalization identities have the written proofs above.
+
+The supplementary \texttt{verify.py} and \texttt{checks.json} contain the
+eight complete finite period certificates, their minimality witnesses,
+five row certificates, three zero-tail certificates, and the mod-$12$
+certificate. They also compare the integer recurrence \eqref{eq:rec}
+and polynomial operator \eqref{eq:operator} at all $257$ indices
+$0\leq n\leq256$ for A281184 and at $65$ indices for eight further
+parameter pairs. Fourteen additional moduli have $64$ finite comparisons
+each. Those coefficient and modular comparisons are finite checks;
+the all-index consequences use Proposition~\ref{prop:ch} or the cited
+all-modulus theorems. All arithmetic is exact, with no rounding.
+The source archive includes these materials and their build instructions.
+
+\begin{thebibliography}{9}
+\bibitem{oeis184} OEIS Foundation Inc., \emph{A281184}, entry by P.~D.~Hanna,
+Jan.~17, 2017; conjecture by P.~Bala, Feb.~16, 2026; revision 41,
+Nov.~6, 2026. \url{https://oeis.org/A281184}.
+\bibitem{su} L.-H.~Su, \emph{Quadratic Derivations and Uniform Modular
+Periods for Six Inverse-Function Sequences}, version 1, Oct.~31, 2026.
+Theorem 3.2, Corollary 3.3, Propositions 3.4--3.6, Theorem 4.1 and
+the following normalization remark.
+\url{https://doi.org/10.5281/zenodo.23835577}.
+\bibitem{graves} P.~Bala, \emph{The method of Graves for computing inverse
+functions}, Jan.~26, 2026, Theorem 1 and Corollary 1.
+\url{https://oeis.org/A281181/a281181.pdf}.
+\bibitem{oeis428} OEIS Foundation Inc., \emph{A281428}, revision 54,
+Nov.~6, 2026; P.~Bala's Jan.~22 and Mar.~3, 2026 blocks.
+\url{https://oeis.org/A281428}.
+\bibitem{oeis180} OEIS Foundation Inc., \emph{A281180}, revision 86,
+Nov.~6, 2026. \url{https://oeis.org/A281180}.
+\bibitem{oeis181} OEIS Foundation Inc., \emph{A281181}, revision 103,
+Nov.~6, 2026. \url{https://oeis.org/A281181}.
+\bibitem{oeis182} OEIS Foundation Inc., \emph{A281182}, revision 32,
+Sept.~3, 2017. \url{https://oeis.org/A281182}.
+\bibitem{oeis183} OEIS Foundation Inc., \emph{A281183}, revision 60,
+Nov.~6, 2026. \url{https://oeis.org/A281183}.
+\bibitem{oeis440} OEIS Foundation Inc., \emph{A281440}, revision 17,
+Nov.~6, 2026. \url{https://oeis.org/A281440}.
+\end{thebibliography}
+\medskip\noindent\small
+\copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0), \url{https://creativecommons.org/licenses/by/4.0/}.
+\end{document}

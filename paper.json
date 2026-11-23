@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 87055,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "4d31fd7c07b262b0a56af0e3a882ae4b0cacbcb47f8e6932a31c779cc7ac5306",
+      "sha256": "4d31fd7c07b262b0a56af0e3a882ae4b0cacbcb47f8e6932a31c779cc7ac5306"
+    },
+    "source": {
+      "bytes": 20695,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "b07a9ef3fcd8b557257aed569c043c1906076eea4ba00bcb1251f27de07a65e7",
+      "sha256": "b07a9ef3fcd8b557257aed569c043c1906076eea4ba00bcb1251f27de07a65e7"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "For Peter Bala's totient-square conjecture in OEIS A281184, comment of February 16, 2026, revision 41, we specialize Lien-Hung Su's Theorem 3.2 and Corollary 3.3 (October 31, 2026) to obtain the asserted eventual period by identifying the coefficients with integer derivation iterates. For Bala's related examples in A281428, March 3, 2026, revision 54, finite-dimensional certificates prove the least modulo-27 tail period 18 from the exact index 2 and divisibility by 385 from the exact index 6. The former improves Su's sufficient index 3. Seven companion least periods, five row-multiplier identities, full-index and derivative consequences, and two corrected coefficient normalizations are included, with precise written, finite-check and Lean-declaration coverage. No priority claim is made.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "92de86888730265f84e24d28bdb67546c543a966",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281184TotientSquarePeriod.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 87055,
+      "sha256": "4d31fd7c07b262b0a56af0e3a882ae4b0cacbcb47f8e6932a31c779cc7ac5306",
+      "url": "/api/v1/collected-papers/balaper-a281184-phi2period/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T15:36:56.769920593Z",
+    "record": "balaper-a281184-phi2period",
+    "repository_name": "balaper-a281184-phi2period",
+    "source": {
+      "bytes": 20695,
+      "sha256": "b07a9ef3fcd8b557257aed569c043c1906076eea4ba00bcb1251f27de07a65e7",
+      "url": "/api/v1/collected-papers/balaper-a281184-phi2period/files/source?version=2"
+    },
+    "title": "Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T15:36:56.769920593Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "balaper-a281184-phi2period"
+  }
+}

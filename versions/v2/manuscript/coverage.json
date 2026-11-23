@@ -1,0 +1,47 @@
+{
+  "id": "balaper-a281184-phi2period",
+  "revision": 2,
+  "problem_ids": [
+    "balaper-a281184-phi2period",
+    "balaper-a281181-phi2period",
+    "balaper-a281183-phi2period",
+    "balaper-phi2period",
+    "balaper-a281440-phi2period",
+    "bala281428"
+  ],
+  "topic": "Bala's inverse-function modular conjectures, Su's period theorem, and sharp finite-modulus tails",
+  "title": "Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "For Peter Bala's totient-square conjecture in OEIS A281184, comment of February 16, 2026, revision 41, we specialize Lien-Hung Su's Theorem 3.2 and Corollary 3.3 (October 31, 2026) to obtain the asserted eventual period by identifying the coefficients with integer derivation iterates. For Bala's related examples in A281428, March 3, 2026, revision 54, finite-dimensional certificates prove the least modulo-27 tail period 18 from the exact index 2 and divisibility by 385 from the exact index 6. The former improves Su's sufficient index 3. Seven companion least periods, five row-multiplier identities, full-index and derivative consequences, and two corrected coefficient normalizations are included, with precise written, finite-check and Lean-declaration coverage. No priority claim is made.",
+  "summary": "Exact Cayley–Hamilton certificates give sharp origins 2 modulo 27 and 6 modulo 385 for A281428, alongside Su-attributed general modular conclusions for Bala's inverse-function sequences and explicit companion certificates.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281184TotientSquarePeriod.lean",
+  "lean_evidence": [
+    {"file": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281184TotientSquarePeriod.lean", "declarations": ["D5.S1.Recurrence.Periodic.BalaA281184TotientSquarePeriod.result"], "scope": "Source existence, integer even coefficients of C^3, and eventual totient-square shift for positive moduli."},
+    {"file": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Periodic/BalaA281181TotientSquarePeriod.lean", "declarations": ["BalaPolynomialSystem.even_sequence_coefficient", "BalaPolynomialSystem.even_sequence_period"], "scope": "Coefficient correspondence and square periods for q=3 or 7, flow exponent q+1."},
+    {"file": "https://github.com/the-omega-institute/trureturing/blob/92de86888730265f84e24d28bdb67546c543a966/D5/S1/Recurrence/Residue/BalaQuarticEGFEventualDivisibility.lean", "declarations": ["D5.S1.Recurrence.Residue.BalaQuarticEGFEventualDivisibility.result"], "scope": "Source existence and eventual divisibility for positive moduli coprime to 6; exact origins and the second A281428 conjecture are separate written or cited results."}
+  ],
+  "prior_work": {
+    "author": "Lien-Hung Su",
+    "date": "2026-10-31",
+    "doi": "10.5281/zenodo.23835577",
+    "scope": "General even-flow periods, seven least-period examples, row relations for b=4, the derivative identity, and both all-modulus A281428 conjectures. The explicit mod-27 certificate sharpens the sufficient origin 3 to the exact origin 2."
+  },
+  "verification_scope": {
+    "written_proofs": "Coefficient correspondence, Cayley–Hamilton propagation, sharp finite-modulus tails, companion periods and row relations, full-index consequence, and coefficient normalization identities.",
+    "finite_checks": "Eight least-period certificates; five row certificates; three prime zero-tail certificates; the mod-12 certificate; 257 coefficient comparisons and eight further groups of 65; fourteen groups of 64 modular comparisons.",
+    "lean_declarations": "The linked result establishes the source-series witnesses, integer normalized C^3 coefficients and eventual totient-square shift. BalaPolynomialSystem.even_sequence_coefficient and even_sequence_period in the companion pinned file cover coefficient correspondence and square periods for q=3 or 7, flow exponent q+1. BalaQuarticEGFEventualDivisibility.result at the same revision covers source existence and eventual divisibility for moduli coprime to 6, not exact origins or the second A281428 conjecture."
+  },
+  "source_locators": [
+    {"entry": "A281184", "revision": 41, "locator": "Peter Bala comment, February 16, 2026", "url": "https://oeis.org/A281184"},
+    {"entry": "A281180", "revision": 86, "locator": "Peter Bala comment, February 18, 2026", "url": "https://oeis.org/A281180"},
+    {"entry": "A281181", "revision": 103, "locator": "Peter Bala comment, February 16, 2026; Paul Curtz comments, January 20, 2017; expansion, December 14, 2025", "url": "https://oeis.org/A281181"},
+    {"entry": "A281183", "revision": 60, "locator": "Peter Bala comment, February 16, 2026; tentative g formula, December 22, 2025", "url": "https://oeis.org/A281183"},
+    {"entry": "A281440", "revision": 17, "locator": "Peter Bala comment, February 19, 2026", "url": "https://oeis.org/A281440"},
+    {"entry": "A281428", "revision": 54, "locator": "Peter Bala conjectures and examples, March 3, 2026; derivative formula, January 22, 2026", "url": "https://oeis.org/A281428"},
+    {"entry": "A281182", "revision": 32, "locator": "Defining full-index exponential generating function, September 3, 2017 version", "url": "https://oeis.org/A281182"}
+  ]
+}
