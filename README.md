@@ -5,13 +5,15 @@
 For Peter Bala's totient-square conjecture in OEIS A281184, comment of February 16, 2026, revision 41, we specialize Lien-Hung Su's Theorem 3.2 and Corollary 3.3 (October 31, 2026) to obtain the asserted eventual period by identifying the coefficients with integer derivation iterates. For Bala's related examples in A281428, March 3, 2026, revision 54, finite-dimensional certificates prove the least modulo-27 tail period 18 from the exact index 2 and divisibility by 385 from the exact index 6. The former improves Su's sufficient index 3. Seven companion least periods, five row-multiplier identities, full-index and derivative consequences, and two corrected coefficient normalizations are included, with precise written, finite-check and Lean-declaration coverage. No priority claim is made.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24411960](https://doi.org/10.5281/zenodo.24411960)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24411959](https://doi.org/10.5281/zenodo.24411959)
 - License: CC-BY-4.0
 - Version: 2
 - Mathesis record: [balaper-a281184-phi2period](https://mathesis-omega-research.apps.chrono-ai.fun/papers/balaper-a281184-phi2period?version=2)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem. Mathesis, version 2. https://mathesis-omega-research.apps.chrono-ai.fun/papers/balaper-a281184-phi2period?version=2
+Haobo Ma, Wenlin Zhang (2026). Sharp tails for Bala's inverse-function conjectures and a specialization of Su's period theorem. Mathesis, version 2. https://doi.org/10.5281/zenodo.24411960
 
 ## Statement progress
 
